@@ -6,6 +6,8 @@ WORKDIR /opt/nodejs
 
 RUN npm install express --save \
     && npm install pm2@latest -g 
+RUN mkdir /home/node/.pm2 \
+    && chmod -R 777 /home/node/.pm2
 
 RUN chmod  775 /
     
