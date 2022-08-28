@@ -17,4 +17,6 @@ RUN npm config set strict-ssl=false \
     && npm install -D gulp
 
 COPY app.js $NODEJS_HOME/server/src/app.js
+COPY startNodeJS.sh /opt/nodejs/bin/
 
+RUN chmod +x /opt/nodejs/bin/startNodeJS.sh
