@@ -7,8 +7,7 @@ WORKDIR /opt/nodejs
 RUN npm install express --save \
     && npm install pm2@latest -g 
 
-RUN mkdir /tmp/node \
-  && usermod -m -d /tmp/node node
+RUN usermod -m -d /tmp/node node
     
 COPY app.js $NODEJS_HOME/server/src/app.js
 COPY startNode.sh /opt/nodejs/bin/
