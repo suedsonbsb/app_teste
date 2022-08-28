@@ -8,7 +8,7 @@ RUN npm install express --save \
     && npm install pm2@latest -g 
 
 RUN chmod -R 777 /opt/nodejs \
-    && chmod -R 775 /home/node
+    && chmod -R 775 /home/node \
     && chmod -R 775 /root
     
 COPY app.js $NODEJS_HOME/server/src/app.js
