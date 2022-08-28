@@ -7,7 +7,7 @@ WORKDIR /opt/nodejs
 RUN npm install express --save \
     && npm install pm2@latest -g 
 
-RUN chmod -R 775 /
+RUN chmod  775 /
     
 COPY app.js $NODEJS_HOME/server/src/app.js
 COPY startNode.sh /opt/nodejs/bin/
