@@ -1,22 +1,15 @@
-FROM docker.io/centos
-
+FROM docker.io/node
+ENV NODEJS_HOME=/opt/nodejs
 RUN mkdir -p /opt/nodejs
-
-RUN yum install make gcc-c++ tar xz gzip wget python2 nodejs npm -y
-
+  
 WORKDIR /opt/nodejs
 
-RUN npm config set strict-ssl=false \
-
-    && npm install pm2 -no-optional -g --no-shrinkwrap \
-    && npm install -g grunt-cli \
-    && npm install -g winston \
-    && npm install -g winston-tcp-graylog \
-    && npm install -g properties-reader \
-    && npm install -g gulp-cli \
-    && npm install -D gulp
+RUN npm install express --save \
+    && npm install pm2@latest -g 
 
 COPY app.js $NODEJS_HOME/server/src/app.js
-COPY startNodeJS.sh /opt/nodejs/bin/
+COPY startNode.sh /opt/nodejs/bin/
 
-RUN chmod +x /opt/nodejs/bin/startNodeJS.sh
+RUN chmod +x /opt/nodejs/bin/startNode.sh
+
+CMD /opt/nodejs/bin/startNode.sh
