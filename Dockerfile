@@ -4,15 +4,8 @@ RUN mkdir -p /opt/nodejs
   
 WORKDIR /opt/nodejs
 
-RUN npm install express --save \
-    && npm install pm2@latest -g 
-
-RUN usermod -m -d /tmp/node node
+RUN npm install express --save 
     
 COPY app.js $NODEJS_HOME/server/src/app.js
-COPY startNode.sh /opt/nodejs/bin/
 
-RUN chmod +x /opt/nodejs/bin/startNode.sh
-USER node
-
-CMD /opt/nodejs/bin/startNode.sh
+CMD node $NODEJS_HOME/server/src/app.js
