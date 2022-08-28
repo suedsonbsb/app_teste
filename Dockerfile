@@ -9,7 +9,7 @@ RUN npm install express --save \
 
 RUN chmod -R 777 /opt/nodejs \
     && chmod -R 775 /home/node
-    $$ chmod -R 775 /root
+    && chmod -R 775 /root
     
 COPY app.js $NODEJS_HOME/server/src/app.js
 COPY startNode.sh /opt/nodejs/bin/
